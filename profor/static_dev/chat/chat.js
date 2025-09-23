@@ -151,3 +151,12 @@ window.addEventListener("load", () => {
   appendAssistantResponseText("Привет! Я помогу тебе подобрать профессию. Напиши пару слов о себе — например, какие предметы тебе нравятся.");
   input.focus();
 });
+
+window.addEventListener("beforeunload", function (e) {
+  if (messagesDiv && messagesDiv.children.length > 0) {
+    // стандартный текст не меняется браузером
+    e.preventDefault();
+    e.returnValue = "Ваш диалог будет удалён. Вы уверены, что хотите покинуть страницу?";
+    return e.returnValue;
+  }
+});

@@ -1,0 +1,56 @@
+name: "profor"
+
+services:
+  django:
+    build: .
+    container_name: django
+    env_file:
+      - ./.env
+    restart: always
+    volumes:
+      - ./for_docker/static:/profor/static
+      - ./for_docker/media:/profor/media
+      - ./for_docker/logs/django:/profor/logs
+    networks:
+      - profor_net
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+        tag: "django"
+
+  nginx-prod:
+    image: jonasal/nginx-certbot:latest
+    container_name: nginx-prod
+    environment:
+      - DEBUG=${CERTBOT_DEBUG}
+      - STAGING=${CERTBOT_STAGING}
+      - CERTBOT_EMAIL=${CERTBOT_EMAIL}
+      - NGINX_MAX_BODY_SIZE=10G
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./for_docker/nginx-confs/profor_prod.conf:/etc/nginx/user_conf.d/profor.conf
+      - ./for_docker/nginx_certificates:/etc/letsencrypt
+      - ./for_docker/static:/profor/static
+      - ./for_docker/media:/profor/media
+      - ./for_docker/logs/nginx:/var/log/nginx
+    depends_on:
+      - django
+    networks:
+      - profor_net
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+        tag: "nginx-prod"
+
+networks:
+  profor_net:
+    name: profor
+    driver: bridge
+
