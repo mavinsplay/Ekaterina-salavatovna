@@ -1,7 +1,7 @@
 name: "profor"
 
 services:
-  django:
+  profor_django:
     build: .
     container_name: profor_django
     env_file:
