@@ -3,7 +3,7 @@ name: "profor"
 services:
   django:
     build: .
-    container_name: django
+    container_name: profor_django
     env_file:
       - ./.env
     restart: always
@@ -39,7 +39,7 @@ services:
       - ./for_docker/media:/profor/media
       - ./for_docker/logs/nginx:/var/log/nginx
     depends_on:
-      - django
+      - profor_django
     networks:
       - profor_net
     logging:
