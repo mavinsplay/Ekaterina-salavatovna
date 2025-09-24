@@ -5,7 +5,7 @@ services:
     build: .
     container_name: profor_django
     env_file:
-      - .env
+      - ./.env
     restart: always
     volumes:
       - ./for_docker/static:/profor/static
