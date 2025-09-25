@@ -7,7 +7,10 @@
 <title>Chat MVP</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
+  <link rel="apple-touch-icon" sizes="180x180" href={% static "favicons/apple-touch-icon.png" %}>
+  <link rel="icon" type="image/png" sizes="32x32" href={% static "favicons/favicon-32x32.png" %}>
+  <link rel="icon" type="image/png" sizes="16x16" href={% static "favicons/favicon-16x16.png" %}>
+  <link rel="manifest" href={% static "favicons/site.webmanifest" %}>
 <style>
 :root{
   --bg:#fff9f3;
@@ -240,7 +243,7 @@ h1{
   <main class="container" role="main" aria-labelledby="title">
     <section class="left">
       <h1 id="title">Найди свою будущую профессию</h1>
-      <p class="lead">Живой диалог с чатом поможет вам выбрать вашу будущую профессию!</p>
+      <p class="lead">Живой диалог с чатом поможет тебе выбрать твою будущую профессию!</p>
 
       <div class="chat-card" aria-live="polite">
         <div id="messages" class="messages" aria-atomic="false" aria-relevant="additions"></div>
@@ -292,6 +295,7 @@ h1{
 
       <small>робот - Биг боб</small>
     </aside>
+        <p>Разработано лицеем №384</p>
   </main>
 
   <!-- подключаем статический JS -->
