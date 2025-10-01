@@ -148,7 +148,7 @@ input.addEventListener("keydown", (e) => {
 
 // начальное приветствие
 window.addEventListener("load", () => {
-  appendAssistantResponseText("Привет! Я помогу тебе подобрать профессию. Напиши пару слов о себе — например, какие предметы тебе нравятся.");
+  appendAssistantResponseText("Привет! Начни диалог и я помогу тебе подобрать современную профессию.");
   input.focus();
 });
 
